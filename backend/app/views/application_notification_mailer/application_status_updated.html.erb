@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #3b82f6;
+    }
+    .content {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #f5f5f5;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+    .button {
+      display: inline-block;
+      background-color: #3b82f6;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+    .job-details {
+      background-color: #f9fafb;
+      border-left: 3px solid #3b82f6;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .status-pending {
+      background-color: #fff7e6;
+      border: 1px solid #ffd699;
+      color: #cc8800;
+    }
+    .status-reviewing {
+      background-color: #e6f3ff;
+      border: 1px solid #99ceff;
+      color: #005cb3;
+    }
+    .status-interview {
+      background-color: #f0e6ff;
+      border: 1px solid #cc99ff;
+      color: #6600cc;
+    }
+    .status-accepted {
+      background-color: #e6ffee;
+      border: 1px solid #99ffbb;
+      color: #00802b;
+    }
+    .status-rejected {
+      background-color: #ffe6e6;
+      border: 1px solid #ff9999;
+      color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Cập nhật đơn ứng tuyển</h1>
+  </div>
+  
+  <div class="content">
+    <p>Xin chào <%= @application.full_name %>,</p>
+    
+    <p>Chúng tôi xin thông báo đơn ứng tuyển của bạn vào vị trí <strong><%= @application.job.title %></strong> tại <strong><%= @application.job.company.name %></strong> đã được cập nhật.</p>
+    
+    <div class="job-details">
+      <h3><%= @application.job.title %></h3>
+      <p><strong>Công ty:</strong> <%= @application.job.company.name %></p>
+      <p><strong>Địa điểm:</strong> <%= @application.job.location %></p>
+      
+      <% status_classes = {
+        'pending' => 'status-pending',
+        'reviewing' => 'status-reviewing',
+        'interview' => 'status-interview',
+        'accepted' => 'status-accepted',
+        'rejected' => 'status-rejected'
+      } %>
+      
+      <% status_texts = {
+        'pending' => 'Đang chờ',
+        'reviewing' => 'Đang xem xét',
+        'interview' => 'Phỏng vấn',
+        'accepted' => 'Đã chấp nhận',
+        'rejected' => 'Bị từ chối'
+      } %>
+      
+      <p>
+        <strong>Trạng thái hiện tại:</strong>
+        <span class="status-badge <%= status_classes[@application.status] %>">
+          <%= status_texts[@application.status] %>
+        </span>
+      </p>
+    </div>
+    
+    <p><strong><%= @status_message %></strong></p>
+    
+    <% if @application.status == 'pending' %>
+      <p>Đơn ứng tuyển của bạn đang được xem xét. Chúng tôi sẽ thông báo cho bạn khi có tiến triển mới.</p>
+    <% elsif @application.status == 'reviewing' %>
+      <p>Hồ sơ của bạn đã được chuyển đến bộ phận tuyển dụng và đang được xem xét cẩn thận. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+    <% elsif @application.status == 'interview' %>
+      <p>Chúc mừng! Bạn đã được lựa chọn để tham gia vòng phỏng vấn. Bạn sẽ sớm nhận được email chi tiết về lịch phỏng vấn. Hãy chuẩn bị thật tốt nhé!</p>
+    <% elsif @application.status == 'accepted' %>
+      <p>Chúc mừng! Đơn ứng tuyển của bạn đã được chấp nhận. Chúng tôi rất vui mừng được chào đón bạn tham gia đội ngũ. Bạn sẽ sớm nhận được email với các bước tiếp theo để hoàn tất quá trình tuyển dụng.</p>
+    <% elsif @application.status == 'rejected' %>
+      <p>Rất tiếc, đơn ứng tuyển của bạn không phù hợp với vị trí này vào thời điểm hiện tại. Đừng nản lòng, hãy tiếp tục tìm kiếm các cơ hội phù hợp khác trên nền tảng của chúng tôi.</p>
+      <p>Chúng tôi đánh giá cao sự quan tâm của bạn đến vị trí và công ty này. Hãy tiếp tục theo dõi các vị trí tuyển dụng mới phù hợp với kỹ năng và kinh nghiệm của bạn.</p>
+    <% end %>
+    
+    <a href="<%= @dashboard_url %>" class="button">Xem chi tiết đơn ứng tuyển</a>
+    
+    <p>Trân trọng,<br>
+    Đội ngũ Decapa</p>
+  </div>
+  
+  <div class="footer">
+    <p>Đây là email tự động, vui lòng không trả lời email này.</p>
+    <p>&copy; <%= Date.today.year %> Decapa. Tất cả các quyền được bảo lưu.</p>
+  </div>
+</body>
+</html> 

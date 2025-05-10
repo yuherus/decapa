@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_plan: one
+  invoice_number: MyString
+  issued_date: 2025-03-31
+  amout: 9.99
+  due_date: 2025-03-31
+
+two:
+  company_plan: two
+  invoice_number: MyString
+  issued_date: 2025-03-31
+  amout: 9.99
+  due_date: 2025-03-31

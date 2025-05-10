@@ -1,0 +1,120 @@
+---
+description: 
+globs: backend/**/*.rb,backend/app/**/*,backend/config/**/*,backend/db/**/*
+alwaysApply: false
+---
+# Rails API Development Rules
+
+## Versions & Environment
+- Ruby 3.2.2
+- Rails 7.1.5.1
+- PostgreSQL
+- API-only development
+
+## Core Gems
+- Devise (with Omniauth) - Authentication
+- CanCanCan - Authorization
+- Ransack - Advanced search
+- Paranoia - Soft delete
+- RSpec - Testing framework
+- Sidekiq - For Background job
+
+## Code Style and Structure
+- Write concise, idiomatic Ruby code with accurate examples
+- Follow Rails conventions and best practices
+- Use object-oriented and functional programming patterns as appropriate
+- Prefer iteration and modularization over code duplication
+- Use descriptive variable and method names (e.g., `user_signed_in?`, `calculate_total`)
+- Structure files according to Rails conventions (MVC, concerns, helpers, etc.)
+
+## Naming Conventions
+- Use `snake_case` for file names, method names, and variables
+- Use `CamelCase` for class and module names
+- Follow Rails naming conventions for models, controllers, and views
+
+## Ruby and Rails Usage
+- Leverage Ruby 3.x features when appropriate (pattern matching, endless methods)
+- Utilize Rails' built-in helpers and methods
+- Use ActiveRecord effectively for database operations
+
+## Syntax and Formatting
+- Follow the Ruby Style Guide (https://rubystyle.guide/)
+- Use Ruby's expressive syntax (unless, ||=, &.)
+- Prefer single quotes for strings unless interpolation is needed
+
+## API Design
+- Follow RESTful API conventions
+- Clear API versioning (v1, v2, etc.)
+- Use appropriate HTTP status codes
+- Implement JWT for authentication
+- Consistent JSON formatting
+
+## Error Handling and Validation
+- Use exceptions for exceptional cases, not for control flow
+- Implement proper error logging and return friendly messages
+- Use ActiveModel validations in models
+- Handle errors gracefully in controllers with appropriate JSON format
+
+## Performance Optimization
+- Use database indexing effectively
+- Implement caching strategies (when necessary)
+- Use eager loading to avoid N+1 queries
+- Optimize database queries using includes, joins, or select
+
+## Devise & Authentication
+- Configure Devise for API authentication
+- Use JWT tokens
+- Implement OAuth with popular providers
+- Handle refresh tokens properly
+
+## Authorization with CanCanCan
+- Define clear Abilities
+- Separate authorization logic in Ability class
+- Apply authorization at both controller and model levels when needed
+
+## Soft Delete with Paranoia
+- Use acts_as_paranoid on models that need data protection
+- Follow proper data restoration procedures
+- Ensure associations handle deleted records correctly
+
+## Search with Ransack
+- Design flexible search API endpoints
+- Customize ransackable_attributes/associations for security
+- Optimize search performance for large datasets
+
+## Key Conventions
+- Follow RESTful routing conventions for API
+- Use concerns for shared behavior
+- Implement service objects for complex business logic
+- Use background jobs (like Sidekiq) for time-consuming tasks
+
+## Testing with RSpec
+- Write comprehensive tests for API endpoints
+- Follow TDD/BDD practices
+- Unit tests for models and services
+- Request specs for API endpoints
+- Use factories (FactoryBot) for test data generation
+- Mock external services when necessary
+
+## Security
+- Implement proper authentication and authorization
+- Use strong parameters in controllers
+- Protect against common web vulnerabilities (XSS, CSRF, SQL injection)
+- Handle CORS properly for API
+- Implement rate limiting to prevent brute force attacks
+
+## Databases & Migrations
+- Design efficient schema
+- Use reference columns instead of raw foreign keys
+- Ensure migrations can be rolled back safely
+- Use database indexes strategically
+
+## API Versioning
+- Use namespaces in routes for versioning
+- Control breaking changes between versions
+- Provide documentation for each version
+
+## Documentation
+- Describe API endpoints in detail
+- Use Swagger/OpenAPI or similar tools
+- Update documentation when API changes

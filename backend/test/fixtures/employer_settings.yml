@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employer: one
+  new_application_notifications: false
+  upcoming_interview_notification: false
+  upcoming_interview_notification_time: 1
+  expired_job_notification: false
+  new_application_email: false
+  upcoming_interview_email: false
+  upcoming_interview_email_time: 1
+  expired_job_email: false
+
+two:
+  employer: two
+  new_application_notifications: false
+  upcoming_interview_notification: false
+  upcoming_interview_notification_time: 1
+  expired_job_notification: false
+  new_application_email: false
+  upcoming_interview_email: false
+  upcoming_interview_email_time: 1
+  expired_job_email: false

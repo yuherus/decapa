@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  jobs_notification: false
+  invitation_notification: false
+  upcoming_interview_notification: false
+  upcoming_interview_notification_time: 1
+  resume_visibility: false
+  jobs_email: false
+  invitation_email: false
+  upcoming_interview_email: false
+  upcoming_interview_email_time: 1
+
+two:
+  user: two
+  jobs_notification: false
+  invitation_notification: false
+  upcoming_interview_notification: false
+  upcoming_interview_notification_time: 1
+  resume_visibility: false
+  jobs_email: false
+  invitation_email: false
+  upcoming_interview_email: false
+  upcoming_interview_email_time: 1

@@ -1,0 +1,233 @@
+---
+description: 
+globs: frontend/**/*.js,frontend/**/*.jsx
+alwaysApply: false
+---
+# Next.js Frontend Development Rules
+
+## Technology Stack
+- Next.js 15+
+- React 19
+- Zustand (State Management)
+- TanStack Query (Data Fetching)
+- Shadcn UI (Component Library)
+- Lucide React (Icons)
+- Tailwind CSS (Styling)
+- JavaScript (No TypeScript)
+
+## Code Style and Structure
+- Write concise, maintainable JavaScript with accurate examples
+- Use functional and declarative programming patterns; avoid classes
+- Favor iteration and modularization over code duplication
+- Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`)
+- Structure files with exported components, subcomponents, helpers, static content
+- Use lowercase with dashes for directory names (e.g., `components/auth-wizard`)
+
+## File Structure
+```
+src/
+├── app/                  # App router pages
+├── components/           # Reusable components
+│   ├── ui/               # UI components from Shadcn
+│   ├── layout/           # Layout components
+│   └── feature/          # Feature-specific components
+├── lib/                  # Utility functions and constants
+├── hooks/                # Custom hooks
+├── store/                # Zustand stores
+├── services/             # API services for TanStack Query
+├── middleware.js         # Next.js middleware
+└── styles/               # Global styles and Tailwind configs
+```
+
+## Component Structure
+- Organize components using the following pattern:
+```javascript
+// Imports
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Search } from 'lucide-react'
+
+// Helper functions and constants
+const options = [...]
+
+// Main component
+export default function ComponentName({ prop1, prop2 }) {
+  // State and hooks
+  const [state, setState] = useState(initialState)
+  
+  // Helper functions
+  const handleClick = () => {...}
+  
+  // JSX
+  return (...)
+}
+
+// Subcomponents
+function SubComponent() {...}
+```
+
+## React and Next.js Usage
+- Leverage React 19 features (e.g., use hooks, React Server Components)
+- Utilize Next.js App Router and Server Components when possible
+- Minimize use of `'use client'` directives
+- Implement proper code splitting with dynamic imports
+- Use built-in data fetching mechanisms in Next.js
+
+## Zustand State Management
+- Create modular stores for different domains
+- Implement selectors for accessing specific parts of the state
+- Use middleware for logging, persistence, etc. when needed
+- Follow the immutability pattern when updating state
+
+```javascript
+// Example store structure
+import { create } from 'zustand'
+
+export const useUserStore = create((set) => ({
+  user: null,
+  isLoading: false,
+  error: null,
+  setUser: (user) => set({ user }),
+  login: async (credentials) => {
+    set({ isLoading: true, error: null })
+    try {
+      // login logic
+      set({ user: userData, isLoading: false })
+    } catch (error) {
+      set({ error: error.message, isLoading: false })
+    }
+  },
+}))
+```
+
+## TanStack Query Implementation
+- Create dedicated API services
+- Implement proper query keys for caching
+- Use query options: staleTime, cacheTime, refetchOnWindowFocus, etc.
+- Handle loading and error states consistently
+
+```javascript
+// Example TanStack Query usage
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { fetchData, postData } from '@/services/api'
+
+export function useDataQuery(id) {
+  return useQuery({
+    queryKey: ['data', id],
+    queryFn: () => fetchData(id),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  })
+}
+
+export function useAddDataMutation() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: postData,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['data'] })
+    }
+  })
+}
+```
+
+## UI Components and Styling
+- Use Shadcn UI components as the foundation
+- Customize components with Tailwind CSS
+- Create consistent design tokens and apply them
+- Use Lucide React icons consistently throughout the application
+- Implement responsive design with a mobile-first approach
+
+```javascript
+// Example component with Shadcn UI, Lucide, and Tailwind
+import { Button } from '@/components/ui/button'
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { Search, Settings } from 'lucide-react'
+
+export default function SearchCard() {
+  return (
+    <Card className="w-full max-w-md mx-auto shadow-lg">
+      <CardHeader className="flex items-center justify-between">
+        <h3 className="text-lg font-medium">Search</h3>
+        <Settings className="h-5 w-5 text-gray-500" />
+      </CardHeader>
+      <CardContent>
+        <div className="flex gap-2">
+          <input 
+            className="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2" 
+            placeholder="Search..."
+          />
+          <Button size="sm">
+            <Search className="h-4 w-4 mr-2" />
+            Find
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## Optimization and Best Practices
+- Use React Server Components (RSC) when possible to reduce client-side JavaScript
+- Only use `'use client'` when necessary (for interactivity, hooks, browser APIs)
+- Implement dynamic imports for code splitting
+- Use the Next.js Image component with proper optimization attributes
+- Implement proper loading states and skeleton screens
+
+```javascript
+// Example of dynamic import
+import dynamic from 'next/dynamic'
+
+const HeavyComponent = dynamic(() => import('@/components/heavy-component'), {
+  loading: () => <div className="animate-pulse h-40 bg-gray-200 rounded"></div>,
+  ssr: false, // if it should only render on the client
+})
+```
+
+## Error Handling and Validation
+- Use React Error Boundaries to catch and handle errors
+- Implement form validation using libraries like Yup or Zod
+- Use try/catch for async operations
+- Implement user-friendly error messages and recovery options
+
+```javascript
+// Example error handling
+try {
+  await someAsyncOperation()
+} catch (error) {
+  console.error('Operation failed:', error)
+  setError('Something went wrong. Please try again.')
+}
+```
+
+## Performance Considerations
+- Implement proper memoization with useMemo and useCallback
+- Avoid unnecessary re-renders with proper component structure
+- Use skeleton loaders and suspense boundaries
+- Optimize images and media assets
+- Use proper bundling and code splitting strategies
+
+## Security Best Practices
+- Sanitize user inputs
+- Implement proper authentication and authorization
+- Use HTTP-only cookies for sensitive data
+- Apply Content Security Policy
+- Handle environment variables properly
+
+## Testing
+- Write unit tests for components using Jest and React Testing Library
+- Implement integration tests for key user flows
+- Use mock service worker (MSW) for API mocking
+- Test responsiveness across different viewport sizes
+
+## Documentation
+- Add JSDoc comments for functions and components
+- Document complex logic and business rules
+- Create README files for key directories
+- Document environment setup and configuration
+
+## Development Workflow
+- Use ESLint for code quality
+- Implement Prettier for consistent formatting
+- Use Husky for pre-commit hooks
+- Follow conventional commits for version control

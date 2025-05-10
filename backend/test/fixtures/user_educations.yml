@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  school: MyString
+  major: MyString
+  is_studying: false
+  from_date: 2025-03-30
+  to_date: 2025-03-30
+  additional_details: MyText
+
+two:
+  user: two
+  school: MyString
+  major: MyString
+  is_studying: false
+  from_date: 2025-03-30
+  to_date: 2025-03-30
+  additional_details: MyText

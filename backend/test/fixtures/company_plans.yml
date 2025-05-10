@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  plan: one
+  status: 1
+  quantity: 1
+  start_date: 2025-03-30
+  end_date: 2025-03-30
+
+two:
+  company: two
+  plan: two
+  status: 1
+  quantity: 1
+  start_date: 2025-03-30
+  end_date: 2025-03-30

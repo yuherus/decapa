@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #3b82f6;
+    }
+    .content {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #f5f5f5;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+    .button {
+      display: inline-block;
+      background-color: #3b82f6;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+    .job-details {
+      background-color: #f9fafb;
+      border-left: 3px solid #3b82f6;
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Đơn ứng tuyển đã được gửi thành công!</h1>
+  </div>
+  
+  <div class="content">
+    <p>Xin chào <%= @application.full_name %>,</p>
+    
+    <p>Cảm ơn bạn đã ứng tuyển vào vị trí <strong><%= @application.job.title %></strong> tại <strong><%= @application.job.company.name %></strong>. Đơn ứng tuyển của bạn đã được gửi thành công và đang chờ xem xét.</p>
+    
+    <div class="job-details">
+      <h3><%= @application.job.title %></h3>
+      <p><strong>Công ty:</strong> <%= @application.job.company.name %></p>
+      <p><strong>Địa điểm:</strong> <%= @application.job.location %></p>
+      <p><strong>Ngày nộp đơn:</strong> <%= @application.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+    </div>
+    
+    <p>Bạn có thể theo dõi trạng thái đơn ứng tuyển của mình trong mục "Công việc đã ứng tuyển" trên trang cá nhân của bạn.</p>
+    
+    <p>Chúng tôi sẽ thông báo cho bạn khi có bất kỳ cập nhật nào về đơn ứng tuyển này.</p>
+    
+    <a href="<%= "#{ENV['FRONTEND_URL']}/dashboard/applied-jobs" %>" class="button">Xem đơn ứng tuyển của tôi</a>
+    
+    <p>Chúc bạn may mắn trong quá trình tuyển dụng!</p>
+    
+    <p>Trân trọng,<br>
+    Đội ngũ Decapa</p>
+  </div>
+  
+  <div class="footer">
+    <p>Đây là email tự động, vui lòng không trả lời email này.</p>
+    <p>&copy; <%= Date.today.year %> Decapa. Tất cả các quyền được bảo lưu.</p>
+  </div>
+</body>
+</html> 

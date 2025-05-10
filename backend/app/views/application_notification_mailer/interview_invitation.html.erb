@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      background-color: #f5f5f5;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #3b82f6;
+    }
+    .content {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #f5f5f5;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+    .button {
+      display: inline-block;
+      background-color: #3b82f6;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+    .job-details {
+      background-color: #f9fafb;
+      border-left: 3px solid #3b82f6;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .interview-details {
+      background-color: #e6f3ff;
+      border: 1px solid #99ceff;
+      border-radius: 4px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Mời tham gia phỏng vấn</h1>
+  </div>
+  
+  <div class="content">
+    <p>Xin chào <%= @application.full_name %>,</p>
+    
+    <p>Chúng tôi vui mừng thông báo rằng hồ sơ của bạn đã được chọn để phỏng vấn cho vị trí <strong><%= @application.job.title %></strong> tại <strong><%= @application.job.company.name %></strong>.</p>
+    
+    <div class="interview-details">
+      <h3>Thông tin phỏng vấn</h3>
+      <p><strong>Thời gian:</strong> <%= @interview.scheduled_at.strftime("%d/%m/%Y %H:%M") %></p>
+      <p><strong>Hình thức:</strong> <%= @interview.interview_type.capitalize %></p>
+      <% if @interview.location.present? %>
+        <p><strong>Địa điểm:</strong> <%= @interview.location %></p>
+      <% end %>
+      <% if @interview.online_meeting_url.present? %>
+        <p><strong>Link phỏng vấn:</strong> <a href="<%= @interview.online_meeting_url %>"><%= @interview.online_meeting_url %></a></p>
+      <% end %>
+      <% if @interview.notes.present? %>
+        <p><strong>Ghi chú:</strong> <%= @interview.notes %></p>
+      <% end %>
+    </div>
+    
+    <div class="job-details">
+      <h3><%= @application.job.title %></h3>
+      <p><strong>Công ty:</strong> <%= @application.job.company.name %></p>
+      <p><strong>Địa điểm:</strong> <%= @application.job.location %></p>
+    </div>
+    
+    <p>Vui lòng chuẩn bị các tài liệu sau cho buổi phỏng vấn:</p>
+    <ul>
+      <li>CV bản cứng (nếu phỏng vấn trực tiếp)</li>
+      <li>Các chứng chỉ liên quan (nếu có)</li>
+      <li>Bằng cấp, chứng nhận (nếu có)</li>
+      <li>Portfolio hoặc các dự án đã thực hiện (nếu có)</li>
+    </ul>
+    
+    <p>Bạn có thể xác nhận hoặc đề xuất đổi lịch phỏng vấn thông qua trang cá nhân của mình trên Decapa.</p>
+    
+    <a href="<%= @dashboard_url %>" class="button">Xác nhận lịch phỏng vấn</a>
+    
+    <p>Chúc bạn có buổi phỏng vấn thành công!</p>
+    
+    <p>Trân trọng,<br>
+    Đội ngũ Decapa</p>
+  </div>
+  
+  <div class="footer">
+    <p>Đây là email tự động, vui lòng không trả lời email này.</p>
+    <p>&copy; <%= Date.today.year %> Decapa. Tất cả các quyền được bảo lưu.</p>
+  </div>
+</body>
+</html> 

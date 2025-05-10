@@ -1,0 +1,121 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Full-Stack Developer Rules for Employment Platform
+
+You are an expert full-stack developer specializing in building scalable web applications with Rails API backends and Next.js frontends. Your task is to create a comprehensive employment platform for developers to improve their job opportunities while adhering to best practices in performance, security, and maintainability.
+
+## Project Overview
+This platform connects developers with employers through:
+- Anonymous candidate profiles for unbiased recruitment
+- AI-powered CV improvement and job matching
+- Interview practice with AI
+- Company reviews and ratings
+- Job posting and candidate scouting
+
+## Tech Stack
+### Backend
+- Ruby 3.2.2
+- Rails 7.1.5.1 (API-only)
+- MySQL
+- Core Gems:
+  - Devise (with Omniauth) - Authentication
+  - CanCanCan - Authorization
+  - Ransack - Advanced search
+  - Paranoia - Soft delete
+  - RSpec - Testing framework
+- Docker for AI services integration
+
+### Frontend
+- Next.js 15+
+- React 19 (JavaScript)
+- Zustand (State Management)
+- TanStack Query (Data Fetching)
+- Shadcn UI (Component Library)
+- Lucide React (Icons)
+- Tailwind CSS (Styling)
+
+### AI Services
+- Django API (Dockerized)
+- Features:
+  - Job matching algorithm
+  - CV improvement
+  - Interview simulation
+  - Skills assessment
+
+## System Architecture
+- Microservices architecture:
+  - Rails API for core platform functionality
+  - Django API for AI-powered features
+  - Next.js frontend for client-side rendering
+- Docker containers for service isolation
+- RESTful API design with versioning
+
+## Feature Implementation Guidelines
+
+### Guest Features
+- Job listing with filtering and sorting
+- Company profiles with anonymized reviews
+- Limited search functionality
+- Seamless authentication flow
+
+### User Features
+- Profile management with privacy controls
+- CV builder with AI improvement suggestions
+- Interview practice with AI feedback
+- Company review system with verification
+
+### Company Features
+- Job posting with matching score predictions
+- Anonymous candidate scouting
+- Application management dashboard
+- Company profile customization
+- Analytics on posting performance
+
+### Admin Features
+- Content moderation tools
+- User and company management
+- System configuration and monitoring
+- Analytics dashboard
+
+## AI Integration
+- Django API for machine learning models
+- Docker containers for isolation
+- RESTful endpoints for:
+  - CV analysis and improvement
+  - Job-candidate matching algorithm
+  - Interview simulation
+  - Skills assessment
+- Secure communication between services
+
+## Development Workflow
+- Git-flow branching strategy
+- Pull request reviews
+- CI/CD pipeline configuration
+- Automated testing
+- Staging environment for QA
+
+## Documentation Requirements
+- API documentation with Swagger/OpenAPI
+- Component documentation with Storybook
+- System architecture diagrams
+- Setup instructions for local development
+- Deployment guides
+
+## Deployment Strategy
+- Containerized deployment with Docker
+- Separate environments (dev/staging/production)
+- Database migration strategy
+- Backup and recovery procedures
+- Performance monitoring
+
+## Security and Compliance
+- GDPR compliance for user data
+- Secure handling of personal information
+- Regular security audits
+- Privacy by design principles
+- Data minimization and purpose limitation
+
+This document serves as the primary reference for all development on the employment platform project. All team members should adhere to these guidelines to ensure consistency, quality, and maintainability throughout the development lifecycle.

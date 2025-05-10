@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin: one
+  data_backup_frequency: 1
+  jobs_posting_approval: false
+  need_approve_job_notification: false
+  need_approve_reviews_notification: false
+  success_payment_notification: false
+  need_approve_job_email: false
+  need_approve_reviews_email: false
+  success_payment_email: false
+
+two:
+  admin: two
+  data_backup_frequency: 1
+  jobs_posting_approval: false
+  need_approve_job_notification: false
+  need_approve_reviews_notification: false
+  success_payment_notification: false
+  need_approve_job_email: false
+  need_approve_reviews_email: false
+  success_payment_email: false

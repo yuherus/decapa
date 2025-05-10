@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  application: one
+  stage_number: 1
+  stage_type: 1
+  interview_time: 2025-03-31 02:57:52
+  interview_type: 1
+  interview_location: MyString
+  note: MyText
+  feedback: MyText
+  rating: 1
+
+two:
+  application: two
+  stage_number: 1
+  stage_type: 1
+  interview_time: 2025-03-31 02:57:52
+  interview_type: 1
+  interview_location: MyString
+  note: MyText
+  feedback: MyText
+  rating: 1

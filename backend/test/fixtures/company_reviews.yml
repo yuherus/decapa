@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review: MyText
+  total_rating: 1
+  recommended: false
+  like: MyText
+  improvement: MyText
+  salary_benefit_rating: 1
+  culture_environment_rating: 1
+  office_workspace_rating: 1
+  opportunities_rating: 1
+  leader_management_rating: 1
+  workload_pressure_rating: 1
+  company: one
+
+two:
+  review: MyText
+  total_rating: 1
+  recommended: false
+  like: MyText
+  improvement: MyText
+  salary_benefit_rating: 1
+  culture_environment_rating: 1
+  office_workspace_rating: 1
+  opportunities_rating: 1
+  leader_management_rating: 1
+  workload_pressure_rating: 1
+  company: two
